@@ -89,6 +89,54 @@
             color: #9b51e0;
         }
 
+        /* استایل‌های جستجو - اضافه شده */
+        .search-container {
+            margin-top: 25px;
+            position: relative;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            background: rgba(40, 40, 60, 0.8);
+            border: 2px solid rgba(45, 156, 219, 0.3);
+            border-radius: 12px;
+            color: #fff;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(5px);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: #2d9cdb;
+            box-shadow: 0 0 15px rgba(45, 156, 219, 0.3);
+            background: rgba(40, 40, 60, 0.95);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 1.2rem;
+            color: #2d9cdb;
+            pointer-events: none;
+        }
+
+        .fa-name {
+            display: block;
+            font-size: 0.85rem;
+            color: #8faab9;
+            margin-top: 3px;
+            font-weight: 400;
+        }
+
+        /* پایان استایل‌های جستجو */
+
         .main-category {
             margin: 50px 0 30px;
             text-align: center;
@@ -510,6 +558,13 @@
                 <span class="category-badge framework">چارچوب‌های .NET</span>
                 <span class="category-badge">ابزارهای مدیریتی</span>
             </div>
+
+            <!-- بخش جستجو -->
+            <div class="search-container">
+                <span class="search-icon">🔍</span>
+                <input type="text" class="search-input" id="searchInput"
+                    placeholder="جستجو کنید... (مثال: SQL, دات نت)">
+            </div>
         </header>
 
         <main>
@@ -566,7 +621,8 @@
                 <div class="download-grid">
                     <a href="https://s9.uupload.ir/files/softdooni/S/Programming/SQL/SqlExpress_2005.rar"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR</span>
+                        <span class="download-text">دانلود SQLEXPR <span class="fa-name">(اس کیو ال سرور
+                                اکسپرس)</span></span>
                     </a>
                 </div>
             </section>
@@ -577,35 +633,42 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPR_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x86</span>
+                        <span class="download-text">دانلود SQLEXPR_x86 <span class="fa-name">(اس کیو ال سرور اکسپرس ۳۲
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPR32_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR32_x86</span>
+                        <span class="download-text">دانلود SQLEXPR32_x86 <span class="fa-name">(اس کیو ال سرور ۳۲ بیتی
+                                WoW64)</span></span>
                         <span class="package-tag wow">WoW64</span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x64</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x64 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRWT_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x86</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x86 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                     <a href="https://download.microsoft.com/download/0/4/B/04BE03CD-EAF3-4797-9D8D-2E08E316C998/SQLEXPRADV_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x86</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x86 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -617,35 +680,42 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x64/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x86/SQLEXPR_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x86</span>
+                        <span class="download-text">دانلود SQLEXPR_x86 <span class="fa-name">(اس کیو ال سرور اکسپرس ۳۲
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x86/SQLEXPR32_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR32_x86</span>
+                        <span class="download-text">دانلود SQLEXPR32_x86 <span class="fa-name">(اس کیو ال سرور ۳۲ بیتی
+                                WoW64)</span></span>
                         <span class="package-tag wow">WoW64</span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x64/SQLEXPRWT_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x64</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x64 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x86/SQLEXPRWT_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x86</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x86 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x64/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                     <a href="https://download.microsoft.com/download/F/6/7/F673709C-D371-4A64-8BF9-C1DD73F60990/ENU/x86/SQLEXPRADV_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x86</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x86 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -657,35 +727,42 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2064BIT/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2032BIT/SQLEXPR_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x86</span>
+                        <span class="download-text">دانلود SQLEXPR_x86 <span class="fa-name">(اس کیو ال سرور اکسپرس ۳۲
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/Express%2032BIT%20WoW64/SQLEXPR32_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR32_x86</span>
+                        <span class="download-text">دانلود SQLEXPR32_x86 <span class="fa-name">(اس کیو ال سرور ۳۲ بیتی
+                                WoW64)</span></span>
                         <span class="package-tag wow">WoW64</span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2064BIT/SQLEXPRWT_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x64</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x64 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAndTools%2032BIT/SQLEXPRWT_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRWT_x86</span>
+                        <span class="download-text">دانلود SQLEXPRWT_x86 <span class="fa-name">(اس کیو ال سرور با ابزار
+                                مدیریت)</span></span>
                         <span class="package-tag">+SSMS</span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAdv%2064BIT/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/A/E/EAE6F7FC-767A-4038-A954-49B8B05D04EB/ExpressAdv%2032BIT/SQLEXPRADV_x86_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x86</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x86 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -697,11 +774,13 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/4/1/A/41AD6EDE-9794-44E3-B3D5-A1AF62CD7A6F/sql16_sp2_dlc/en-us/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/4/1/A/41AD6EDE-9794-44E3-B3D5-A1AF62CD7A6F/sql16_sp2_dlc/en-us/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -713,11 +792,13 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/E/F/2/EF23C21D-7860-4F05-88CE-39AA114B014B/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/E/F/2/EF23C21D-7860-4F05-88CE-39AA114B014B/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -729,11 +810,13 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/7/c/1/7c14e92e-bdcb-4f89-b7cf-93543e7112d1/SQLEXPR_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://download.microsoft.com/download/7/c/1/7c14e92e-bdcb-4f89-b7cf-93543e7112d1/SQLEXPRADV_x64_ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -745,11 +828,13 @@
                 <div class="download-grid">
                     <a href="https://s9.uupload.ir/files/softdooni/S/Programming/SQL/SqlExpress_2022_x64.rar"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPR_x64</span>
+                        <span class="download-text">دانلود SQLEXPR_x64 <span class="fa-name">(اس کیو ال سرور اکسپرس ۶۴
+                                بیتی)</span></span>
                     </a>
                     <a href="https://s9.uupload.ir/files/softdooni/S/Programming/SQL/SqlExpressADV_2022_x64.rar"
                         class="download-link">
-                        <span class="download-text">دانلود SQLEXPRADV_x64</span>
+                        <span class="download-text">دانلود SQLEXPRADV_x64 <span class="fa-name">(اس کیو ال سرور
+                                پیشرفته)</span></span>
                         <span class="package-tag adv">Advanced</span>
                     </a>
                 </div>
@@ -761,7 +846,8 @@
                 <div class="download-grid">
                     <a href="https://download.microsoft.com/download/a/3/2/a32ae99f-b6bf-4a49-a076-e66503ccb925/SSMS-Setup-ENU.exe"
                         class="download-link">
-                        <span class="download-text">دانلود SQL Server Management Studio (SSMS)</span>
+                        <span class="download-text">دانلود SQL Server Management Studio (SSMS) <span class="fa-name">(اس
+                                اس ام اس - مدیریت پایگاه داده)</span></span>
                     </a>
                 </div>
             </section>
@@ -784,7 +870,8 @@
                         <div class="compact-grid">
                             <a href="https://s9.uupload.ir/files/softdooni/S/Programming/DotnetFramework/DotNETFramework.1_x86_x64.rar"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 1</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 1 <span class="fa-name">(دات
+                                        نت فریم ورک ۱)</span></span>
                             </a>
                         </div>
                     </section>
@@ -797,7 +884,8 @@
                         <div class="compact-grid">
                             <a href="https://s9.uupload.ir/files/softdooni/S/Programming/DotnetFramework/DotNETFramework.2_x86_x64.rar"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 2</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 2 <span class="fa-name">(دات
+                                        نت فریم ورک ۲)</span></span>
                             </a>
                         </div>
                     </section>
@@ -810,7 +898,8 @@
                         <div class="compact-grid">
                             <a href="https://s9.uupload.ir/files/softdooni/S/Programming/DotnetFramework/DotNETFramework.3.5_Windows10_x86_x64.rar"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 3.5 (Windows 10)</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 3.5 (Windows 10) <span
+                                        class="fa-name">(دات نت فریم ورک ۳.۵ برای ویندوز ۱۰)</span></span>
                             </a>
                         </div>
                     </section>
@@ -823,55 +912,68 @@
                         <div class="compact-grid">
                             <a href="https://download.microsoft.com/download/9/5/A/95A9616B-7A37-4AF6-BC36-D6EA96C8DAAE/dotNetFx40_Full_x86_x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4 <span class="fa-name">(دات
+                                        نت فریم ورک ۴)</span></span>
                             </a>
                             <a href="https://s9.uupload.ir/files/softdooni/S/Programming/DotnetFramework/DotNETFramework.4.5_x86_x64.rar"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.5</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.5 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۵)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/1/6/7/167F0D79-9317-48AE-AEDB-17120579F8E2/NDP451-KB2858728-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.1</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.1 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۵.۱)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/E/2/1/E21644B5-2DF2-47C2-91BD-63C560427900/NDP452-KB2901907-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.2</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.2 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۵.۲)</span></span>
                             </a>
                             <a href="https://s9.uupload.ir/files/softdooni/S/Programming/DotnetFramework/DotNETFramework.4.5.3_x86_x64.rar"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.3</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.5.3 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۵.۳)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/6/F/9/6F9673B1-87D1-46C4-BF04-95F24C3EB9DA/enu_netfx/NDP46-KB3045557-x86-x64-AllOS-ENU_exe/NDP46-KB3045557-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.6</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.6 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۶)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/E/4/1/E4173890-A24A-4936-9FC9-AF930FE3FA40/NDP461-KB3102436-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.6.1</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.6.1 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۶.۱)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/8/b/7/8b79adc2-162c-4cf4-a200-3aeaadc455bf/NDP462-KB3151800-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.6.2</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.6.2 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۶.۲)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/8/b/7/8b79adc2-162c-4cf4-a200-3aeaadc455bf/NDP47-KB3186497-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.7</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.7 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۷)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/8/b/7/8b79adc2-162c-4cf4-a200-3aeaadc455bf/NDP471-KB4033342-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.7.1</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.7.1 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۷.۱)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/f/3/a/f3a6af84-da23-40a5-8d1c-49cc10c8e76f/NDP472-KB4054530-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.7.2</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.7.2 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۷.۲)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/f/3/a/f3a6af84-da23-40a5-8d1c-49cc10c8e76f/NDP48-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.8</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.8 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۸)</span></span>
                             </a>
                             <a href="https://download.microsoft.com/download/4/b/2/cd00d4ed-ebdd-49ee-8a33-eabc3d1030e3/NDP481-x86-x64-AllOS-ENU.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET Framework 4.8.1</span>
+                                <span class="download-text">دانلود Microsoft .NET Framework 4.8.1 <span
+                                        class="fa-name">(دات نت فریم ورک ۴.۸.۱)</span></span>
                             </a>
                         </div>
                     </section>
@@ -883,7 +985,8 @@
                         <div class="compact-grid">
                             <a href="https://download.visualstudio.microsoft.com/download/pr/3aa4e942-42cd-4bf5-afe7-fc23bd9c69c5/64da54c8864e473c19a7d3de15790418/windowsdesktop-runtime-5.0.17-win-x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET 5</span>
+                                <span class="download-text">دانلود Microsoft .NET 5 <span class="fa-name">(دات نت
+                                        ۵)</span></span>
                             </a>
                         </div>
                     </section>
@@ -895,7 +998,8 @@
                         <div class="compact-grid">
                             <a href="https://download.visualstudio.microsoft.com/download/pr/f6b6c5dc-e02d-4738-9559-296e938dabcb/b66d365729359df8e8ea131197715076/windowsdesktop-runtime-6.0.36-win-x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET 6</span>
+                                <span class="download-text">دانلود Microsoft .NET 6 <span class="fa-name">(دات نت
+                                        ۶)</span></span>
                             </a>
                         </div>
                     </section>
@@ -907,7 +1011,8 @@
                         <div class="compact-grid">
                             <a href="https://download.visualstudio.microsoft.com/download/pr/08bbfe8f-812d-479f-803b-23ea0bffce47/c320e4b037f3e92ab7ea92c3d7ea3ca1/windowsdesktop-runtime-7.0.20-win-x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET 7</span>
+                                <span class="download-text">دانلود Microsoft .NET 7 <span class="fa-name">(دات نت
+                                        ۷)</span></span>
                             </a>
                         </div>
                     </section>
@@ -919,7 +1024,8 @@
                         <div class="compact-grid">
                             <a href="https://download.visualstudio.microsoft.com/download/pr/27bcdd70-ce64-4049-ba24-2b14f9267729/d4a435e55182ce5424a7204c2cf2b3ea/windowsdesktop-runtime-8.0.11-win-x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET 8.0.11</span>
+                                <span class="download-text">دانلود Microsoft .NET 8.0.11 <span class="fa-name">(دات نت
+                                        ۸)</span></span>
                             </a>
                         </div>
                     </section>
@@ -931,7 +1037,8 @@
                         <div class="compact-grid">
                             <a href="https://download.visualstudio.microsoft.com/download/pr/685792b6-4827-4dca-a971-bce5d7905170/1bf61b02151bc56e763dc711e45f0e1e/windowsdesktop-runtime-9.0.0-win-x64.exe"
                                 class="download-link">
-                                <span class="download-text">دانلود Microsoft .NET 9.0.0</span>
+                                <span class="download-text">دانلود Microsoft .NET 9.0.0 <span class="fa-name">(دات نت
+                                        ۹)</span></span>
                             </a>
                         </div>
                     </section>
@@ -941,7 +1048,7 @@
 
             <div class="note">
                 <strong>توجه مهم:</strong> لینک‌های ارائه شده مستقیماً به سرورهای مایکروسافت و برخی به میزبان فایل‌های
-                ایرانی اشاره می‌کنند. در صورتی که لینکی از کار افتاده است، می‌توانید نسخه‌های جدیدتر را از سایت رسمی
+                ایرانی اشاره می‌کنند. در صورت که لینکی از کار افتاده است، می‌توانید نسخه‌های جدیدتر را از سایت رسمی
                 مایکروسافت جستجو کنید. همچنین توصیه می‌شود همیشه آخرین نسخه پایدار نرم‌افزارها را دانلود و نصب نمایید.
             </div>
         </main>
@@ -949,9 +1056,54 @@
         <footer>
             <p>این مرکز دانلود صرفاً جهت تسهیل دسترسی به پیش‌نیازهای ضروری نرم‌افزارها ایجاد شده است.</p>
             <p>تمامی حقوق برای شرکت‌های مربوطه (Microsoft و سایرین) محفوظ است.</p>
-            <p style="margin-top: 10px; font-size: 0.8rem; color: #999;">نسخه ۱.۰ - زمستان ۱۴۰۴</p>
+            <p style="margin-top: 10px; font-size: 0.8rem; color: #999;">نسخه ۱.۱ - زمستان ۱۴۰۴</p>
         </footer>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('searchInput');
+            const downloadLinks = document.querySelectorAll('.download-link');
+            const sections = document.querySelectorAll('.version-section, .generation-section');
+
+            // تابع جستجوی پیشرفته
+            searchInput.addEventListener('input', (e) => {
+                const searchTerm = e.target.value.toLowerCase().trim();
+
+                downloadLinks.forEach(link => {
+                    const text = link.textContent.toLowerCase();
+                    // اگر متن جستجو در متن لینک (انگلیسی یا فارسی) بود
+                    if (text.includes(searchTerm)) {
+                        link.style.display = 'flex';
+                        // افکت ملایم برای نمایش
+                        link.style.opacity = '1';
+                    } else {
+                        link.style.display = 'none';
+                        link.style.opacity = '0';
+                    }
+                });
+
+                // مدیریت نمایش سکشن‌ها
+                // اگر تمام لینک‌های داخل یک سکشن مخفی شده باشند، خود سکشن هم مخفی شود
+                sections.forEach(section => {
+                    const visibleLinks = section.querySelectorAll('.download-link[style="display: flex"]');
+                    const totalLinksInThisSection = section.querySelectorAll('.download-link').length;
+
+                    // اگر در این بخش اصلا لینکی وجود ندارد (شاید بخش توضیحات باشد)، کاری نداشته باشیم
+                    if (totalLinksInThisSection > 0) {
+                        if (visibleLinks.length > 0) {
+                            section.style.display = 'block';
+                            // انیمیشن ساده
+                            setTimeout(() => section.style.opacity = '1', 10);
+                        } else {
+                            section.style.display = 'none';
+                            section.style.opacity = '0';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>
