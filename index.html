@@ -1063,45 +1063,55 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
-            const downloadLinks = document.querySelectorAll('.download-link');
+            // انتخاب تمام بخش‌هایی که حاوی لینک‌های دانلود هستند
             const sections = document.querySelectorAll('.version-section, .generation-section');
 
-            // تابع جستجوی پیشرفته
-            searchInput.addEventListener('input', (e) => {
+            /**
+             * تابع اصلی جستجو
+             * این تابع با هر بار تغییر در ورودی جستجو اجرا می‌شود
+             */
+            function performSearch(e) {
+                // دریافت متن جستجو و حذف فاصله‌های اضافی
                 const searchTerm = e.target.value.toLowerCase().trim();
 
-                downloadLinks.forEach(link => {
-                    const text = link.textContent.toLowerCase();
-                    // اگر متن جستجو در متن لینک (انگلیسی یا فارسی) بود
-                    if (text.includes(searchTerm)) {
-                        link.style.display = 'flex';
-                        // افکت ملایم برای نمایش
-                        link.style.opacity = '1';
-                    } else {
-                        link.style.display = 'none';
-                        link.style.opacity = '0';
-                    }
-                });
-
-                // مدیریت نمایش سکشن‌ها
-                // اگر تمام لینک‌های داخل یک سکشن مخفی شده باشند، خود سکشن هم مخفی شود
                 sections.forEach(section => {
-                    const visibleLinks = section.querySelectorAll('.download-link[style="display: flex"]');
-                    const totalLinksInThisSection = section.querySelectorAll('.download-link').length;
+                    // یافتن تمام لینک‌های دانلود داخل این بخش
+                    const links = section.querySelectorAll('.download-link');
+                    let hasVisibleLink = false;
 
-                    // اگر در این بخش اصلا لینکی وجود ندارد (شاید بخش توضیحات باشد)، کاری نداشته باشیم
-                    if (totalLinksInThisSection > 0) {
-                        if (visibleLinks.length > 0) {
-                            section.style.display = 'block';
-                            // انیمیشن ساده
-                            setTimeout(() => section.style.opacity = '1', 10);
+                    // اگر بخش لینک دانلودی ندارد، از آن عبور کن
+                    if (links.length === 0) return;
+
+                    links.forEach(link => {
+                        // جستجو در متن لینک (شامل نام فارسی و انگلیسی)
+                        const text = link.textContent.toLowerCase();
+                        const isMatch = text.includes(searchTerm);
+
+                        if (isMatch) {
+                            // نمایش لینک
+                            link.style.display = 'flex';
+                            setTimeout(() => link.style.opacity = '1', 0);
+                            hasVisibleLink = true;
                         } else {
-                            section.style.display = 'none';
-                            section.style.opacity = '0';
+                            // مخفی کردن لینک
+                            link.style.display = 'none';
+                            link.style.opacity = '0';
                         }
+                    });
+
+                    // مدیریت نمایش کل بخش بر اساس وضعیت لینک‌های داخلی
+                    if (hasVisibleLink) {
+                        section.style.display = 'block';
+                        setTimeout(() => section.style.opacity = '1', 0);
+                    } else {
+                        section.style.display = 'none';
+                        section.style.opacity = '0';
                     }
                 });
-            });
+            }
+
+            // اتصال رویداد ورودی به تابع جستجو
+            searchInput.addEventListener('input', performSearch);
         });
     </script>
 </body>
