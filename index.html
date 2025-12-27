@@ -89,7 +89,7 @@
             color: #9b51e0;
         }
 
-        /* استایل‌های جستجو - اضافه شده */
+        /* استایل‌های جستجو */
         .search-container {
             margin-top: 25px;
             position: relative;
@@ -563,7 +563,7 @@
             <div class="search-container">
                 <span class="search-icon">🔍</span>
                 <input type="text" class="search-input" id="searchInput"
-                    placeholder="جستجو کنید... (مثال: SQL, دات نت)">
+                    placeholder="جستجو کنید... (مثال: SQL 2008, دات نت 4)">
             </div>
         </header>
 
@@ -1063,54 +1063,87 @@
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const searchInput = document.getElementById('searchInput');
-            // انتخاب تمام بخش‌هایی که حاوی لینک‌های دانلود هستند
             const sections = document.querySelectorAll('.version-section, .generation-section');
 
-            /**
-             * تابع اصلی جستجو
-             * این تابع با هر بار تغییر در ورودی جستجو اجرا می‌شود
-             */
-            function performSearch(e) {
-                // دریافت متن جستجو و حذف فاصله‌های اضافی
-                const searchTerm = e.target.value.toLowerCase().trim();
+            // 1. تابع کمکی برای تبدیل اعداد فارسی/عربی به انگلیسی و نرمال‌سازی متن
+            // این تابع باعث می‌شود جستجوی "2008" و "۲۰۰۸" نتیجه یکسان داشته باشد
+            const normalizeText = (str) => {
+                if (!str) return '';
+                return str
+                    .replace(/[۰-۹]/g, d => '۰۱۲۳۴۵۶۷۸۹'.indexOf(d)) // تبدیل اعداد فارسی
+                    .replace(/[٠-٩]/g, d => '٠١٢٣٤٥٦٧٨٩'.indexOf(d)) // تبدیل اعداد عربی
+                    .toLowerCase()
+                    .trim();
+            };
 
-                sections.forEach(section => {
-                    // یافتن تمام لینک‌های دانلود داخل این بخش
-                    const links = section.querySelectorAll('.download-link');
-                    let hasVisibleLink = false;
+            // 2. ساخت ایندکس جستجو (بهینه‌سازی پرفورمنس)
+            // به جای خواندن DOM در هر بار تایپ، یک بار اطلاعات را می‌خوانیم و کش می‌کنیم
+            const searchIndex = [];
 
-                    // اگر بخش لینک دانلودی ندارد، از آن عبور کن
-                    if (links.length === 0) return;
+            sections.forEach(section => {
+                // دریافت عنوان بخش (مثلاً "ورژن ۲۰۰۸" یا ".NET 6")
+                const titleEl = section.querySelector('.version-title, .generation-title');
+                const sectionTitle = titleEl ? normalizeText(titleEl.textContent) : '';
 
-                    links.forEach(link => {
-                        // جستجو در متن لینک (شامل نام فارسی و انگلیسی)
-                        const text = link.textContent.toLowerCase();
-                        const isMatch = text.includes(searchTerm);
+                const links = section.querySelectorAll('.download-link');
+                links.forEach(link => {
+                    // دریافت متن لینک (شامل نام فارسی و انگلیسی)
+                    const linkText = normalizeText(link.textContent);
 
-                        if (isMatch) {
-                            // نمایش لینک
-                            link.style.display = 'flex';
-                            setTimeout(() => link.style.opacity = '1', 0);
-                            hasVisibleLink = true;
-                        } else {
-                            // مخفی کردن لینک
-                            link.style.display = 'none';
-                            link.style.opacity = '0';
-                        }
+                    // ترکیب عنوان بخش با متن لینک برای ساختن "متن قابل جستجو"
+                    // این باعث می‌شود جستجوی "sql 2008" کار کند چون "2008" در عنوان بخش است
+                    const fullSearchableText = `${sectionTitle} ${linkText}`;
+
+                    searchIndex.push({
+                        linkElement: link,
+                        sectionElement: section,
+                        searchableText: fullSearchableText
                     });
+                });
+            });
 
-                    // مدیریت نمایش کل بخش بر اساس وضعیت لینک‌های داخلی
-                    if (hasVisibleLink) {
+            // 3. منطق اصلی جستجو
+            const performSearch = (e) => {
+                const rawQuery = e.target.value;
+                const normalizedQuery = normalizeText(rawQuery);
+
+                // شکستن عبارت جستجو به کلمات جداگانه (Tokenization)
+                // این کار باعث می‌شود ترتیب کلمات مهم نباشد (مثلا "2008 sql" یا "sql 2008")
+                const queryTokens = normalizedQuery.split(/\s+/).filter(t => t.length > 0);
+
+                // یک Map برای شمارش تعداد لینک‌های فعال در هر بخش
+                const sectionVisibilityMap = new Map();
+                sections.forEach(sec => sectionVisibilityMap.set(sec, 0));
+
+                searchIndex.forEach(item => {
+                    // بررسی اینکه آیا "تمام" کلمات جستجو شده در متن آیتم وجود دارند (منطق AND)
+                    const isMatch = queryTokens.length === 0 || queryTokens.every(token => item.searchableText.includes(token));
+
+                    if (isMatch) {
+                        item.linkElement.style.display = 'flex';
+                        // تاخیر بسیار کوتاه برای اعمال انیمیشن CSS
+                        setTimeout(() => item.linkElement.style.opacity = '1', 0);
+
+                        // افزایش شمارنده برای این بخش
+                        sectionVisibilityMap.set(item.sectionElement, sectionVisibilityMap.get(item.sectionElement) + 1);
+                    } else {
+                        item.linkElement.style.display = 'none';
+                        item.linkElement.style.opacity = '0';
+                    }
+                });
+
+                // 4. مدیریت نمایش بخش‌ها بر اساس تعداد لینک‌های پیدا شده
+                sectionVisibilityMap.forEach((count, section) => {
+                    if (count > 0) {
                         section.style.display = 'block';
-                        setTimeout(() => section.style.opacity = '1', 0);
+                        setTimeout(() => section.style.opacity = '1', 10);
                     } else {
                         section.style.display = 'none';
                         section.style.opacity = '0';
                     }
                 });
-            }
+            };
 
-            // اتصال رویداد ورودی به تابع جستجو
             searchInput.addEventListener('input', performSearch);
         });
     </script>
